@@ -66,7 +66,7 @@ const showCategories = async (categories, response) => {
 }
 const startButtons = async (response) => {
 	try {
-		await response.send(new TextMessage("Welcome to our bot"))
+		
 		await response.send(new KeyboardMessage(START_KEYBOARD, null, null, null, 3))
 	} catch (error) {
 		console.log("startButtons error", error);
@@ -90,10 +90,11 @@ const postProducts = async (data, categories, response) => {
 	}
 
 }
-bot.on(BotEvents.CONVERSATION_STARTED, response => {
+bot.on(BotEvents.CONVERSATION_STARTED, async response => {
 	console.count("start"+ response.userProfile.name);
+	await response.send(new TextMessage("Welcome to our bot"))
 	startButtons(response)
-	response.send(new TextMessage(`Hi there ${response.userProfile.name} id:${response.userProfile.id} . I am ${bot.name}! Feel free to ask me anything.`));
+	await response.send(new TextMessage(`Hi there ${response.userProfile.name} id:${response.userProfile.id} . I am ${bot.name}! Feel free to ask me anything.`));
 });
 
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
@@ -104,13 +105,11 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 		if (data === "pizzas" || data === "burgers" || data === "pastas") {
 			return postProducts(data, categories, response)
 		}
-		if (data === "back") {
-			startButtons(response)
-		}
+		
 		if (data === "menu") {
 			showCategories(categories, response);
 		}
-		return
+		return startButtons(response)
 	} catch (error) {
 		console.log(error);
 	}
