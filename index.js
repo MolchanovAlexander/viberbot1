@@ -49,13 +49,14 @@ const showCategories = async (categories, response) => {
 		return categories
 	}
 }
-const startButtons = (response) => {
+const startButtons = async (response) => {
 	try {
-		response.send(new KeyboardMessage(START_KEYBOARD, null, null, null, 10))
-		console.log("start");
+		await response.send(new KeyboardMessage(START_KEYBOARD, null, null, null, 10))
 	} catch (error) {
 		console.log("startButtons error", error);
-	} finally { }
+	} finally {
+		return
+	 }
 }
 const postProducts = async (data, categories, response) => {
 	try {
@@ -88,21 +89,18 @@ bot.on(BotEvents.CONVERSATION_STARTED, (response) => {
 bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 	let data = message?.text.toLowerCase()
 	console.count(response.userProfile.name);
-	console.log(message.text);
-	console.log(response);
+
 	try {
 		if (data === "pizzas" || data === "burgers" || data === "pastas") {
 			return postProducts(data, categories, response)
 		}
-
 		if (data === "menu") {
-			showCategories(categories, response);
+			return showCategories(categories, response);
 		}
 		return startButtons(response)
 	} catch (error) {
 		console.log(error);
 	}
-
 });
 const port = process.env.PORT || 3000;
 //app.use(express.json())

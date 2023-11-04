@@ -63,7 +63,7 @@ module.exports = {
                 "TextVAlign": "middle",
                 "TextHAlign": "center",
                 "TextOpacity": 90,
-                "TextSize": "regular"
+                "TextSize": "large"
             },
             {
                 "Columns": 3,
@@ -74,14 +74,14 @@ module.exports = {
                  "OpenURLType": "internal",
                  "InternalBrowser": {
                      "Mode": "fullscreen",
-                     "CustomTitle": "GUFFF"
+                     "CustomTitle": "MASSIMO"
                  },
                  "ActionBody": "https://next-app-branch-mongo.vercel.app",
                 "Text": "<font color=\"#ffffff\"><b>WebSite</b></font>",
                 "TextVAlign": "middle",
                 "TextHAlign": "center",
                 "TextOpacity": 90,
-                "TextSize": "regular"
+                "TextSize": "large"
             },
             
 
