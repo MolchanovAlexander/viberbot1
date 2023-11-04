@@ -27,26 +27,11 @@ if (!process.env.EXPOSE_URL) {
 	return;
 }
 //test url
-const butUrl = "https://res.cloudinary.com/dvlngfltj/image/upload/v1698998811/restaurant/dboydu2oj5gtnhlpjgy2.png"
-const buttonArgs = [
-	{
-		color: "white",
-		img: "https://res.cloudinary.com/dvlngfltj/image/upload/v1698998811/restaurant/dboydu2oj5gtnhlpjgy2.png",
-		title: "Pizzas"
-	},
-	{
-		color: "black",
-		img: "https://res.cloudinary.com/dvlngfltj/image/upload/v1698998811/restaurant/mvcgpayrazbflda2dhsl.png",
-		title: "Burgers"
-	},
-	{
-		color: "white",
-		img: "https://res.cloudinary.com/dvlngfltj/image/upload/v1698998811/restaurant/itdxsosa761liw2znmag.png",
-		title: "Pastas"
-	}
-]
-let categories = []
 const url = "https://res.cloudinary.com/dvlngfltj/image/upload/v1698956158/yacpiret8fgrpzux4r2s.jpg"
+//app.use(express.json())app.use(cors())
+
+let categories = []
+const cors = require('cors');
 const app = express()
 const bot = new ViberBot({
 	authToken: token,
@@ -116,6 +101,8 @@ bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
 
 });
 const port = process.env.PORT || 3000;
+//app.use(express.json())
+app.use(cors())
 app.use("/viber/webhook", bot.middleware());
 app.listen(port, () => {
 	console.log(`Application running on port: ${port}`);
