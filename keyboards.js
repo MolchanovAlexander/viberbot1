@@ -50,12 +50,12 @@ module.exports = {
     START_KEYBOARD: {
         "Type": "keyboard",
         "Revision": 1,
-        "BgColor": "#F1F1Fc",
+        "BgColor": "#c0c0c0",
         "Buttons": [
             {
                 "Columns": 3,
                 "Rows": 2,
-                "BgColor": "#9933ff",
+                "BgColor": "#6600cc",
                  "BgLoop": true,
                 "ActionType": "reply",
                 "ActionBody": "menu",
@@ -68,7 +68,7 @@ module.exports = {
             {
                 "Columns": 3,
                 "Rows": 2,
-                "BgColor": "#9933ff",
+                "BgColor": "#6600cc",
                  "BgLoop": true,
                  "ActionType": "open-url",
                  "OpenURLType": "internal",
@@ -91,7 +91,7 @@ module.exports = {
         return CATEGORIES = {
             "Type": "keyboard",
             "Revision": 1,
-            "BgColor": "#F1F1Fc",
+            "BgColor": "#cc6600",
             "Buttons": args.map((a) => {
                 return {
                     "Columns": 2,
